@@ -1,0 +1,5 @@
+NoPesados\Digrafo.class
+NoPesados\Grafo.class
+Excepciones\ExceptionNroDeVerticesInvalido.class
+NoPesados\Conexo.class
+Test\TestGrafo.class
