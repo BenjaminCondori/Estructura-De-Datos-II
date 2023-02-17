@@ -1,0 +1,37 @@
+public boolean sonArbolesSimilares1(ArbolMViasBusqueda<K, V> arbol) {
+		// TODO Auto-generated method stub
+		
+		 if (this.esArbolVacio() || arbol.esArbolVacio()) {
+			 return false;
+		 }
+		
+		 Queue<NodoMVias<K,V>> colaDeNodos1= new LinkedList<>();
+		 Queue<NodoMVias<K,V>> colaDeNodos2= new LinkedList<>();
+		 colaDeNodos1.offer(this.raiz);
+		 colaDeNodos2.offer(arbol.raiz);
+		 
+		 while(!colaDeNodos1.isEmpty() && !colaDeNodos2.isEmpty()) {
+			 NodoMVias<K,V> nodoActual1= colaDeNodos1.poll();
+			 NodoMVias<K,V> nodoActual2= colaDeNodos2.poll();
+			 for(int i=0; i<orden-1; i++) {
+				 if(!nodoActual1.esHijoVacio(i)&&!nodoActual2.esHijoVacio(i) ) {
+					 colaDeNodos1.offer(nodoActual1.getHijo(i));
+					 colaDeNodos2.offer(nodoActual2.getHijo(i));
+				 }
+				 if(nodoActual1.esHijoVacio(i)!=nodoActual2.esHijoVacio(i)) {
+					 return false;
+				 }
+			 }
+			 
+			 if(!nodoActual1.esHijoVacio(orden-1)&&!nodoActual2.esHijoVacio(orden-1) ) {
+				 colaDeNodos1.offer(nodoActual1.getHijo(orden-1));
+				 colaDeNodos2.offer(nodoActual2.getHijo(orden-1));
+			 }
+			 if(nodoActual1.esHijoVacio(orden-1)!=nodoActual2.esHijoVacio(orden-1)) {
+				 return false;
+			 }
+			 
+		 }
+
+		return true;
+	}
